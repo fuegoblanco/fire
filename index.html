@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.dom.min.js"></script>
+
+  <script src="stages.js"></script>
+  <script src="components/Game.js"></script>
+  <script src="components/Grid.js"></script>
+  <script src="components/Cell.js"></script>
+  <script src="components/Brick.js"></script>
+  <script src="components/Door.js"></script>
+  <script src="components/GoThrough.js"></script>
+  <script src="components/Coin.js"></script>
+  <script src="components/Power.js"></script>
+  <script src="components/Entity.js"></script>
+  <script src="components/Ghost.js"></script>
+  <script src="components/Pacman.js"></script>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+  <!-- partial:index.partial.html -->
+  <div id="game">
+    <div id="screen"></div>
+
+    <div class="controls">
+
+    </div>
+
+    <div class="gb-bottom">
+      <div class="dpad">
+        <button class="dpad-direction dpad-up" id="dpad-up"></button>
+        <button class="dpad-direction dpad-down" id="dpad-down"></button>
+        <button class="dpad-direction dpad-left" id="dpad-left"></button>
+        <button class="dpad-direction dpad-right" id="dpad-right"></button>
+        <button class="dpad-direction dpad-center"></button>
+      </div>
+      <div class="attack-controls">
+        <button id="x">X</button>
+        <button id="y">Y</button>
+        <button id="a">A</button>
+        <button id="b">B</button>
+        <div class="etc-controls"><button id="start"><label>Start</label></button>
+          <button id="select"><label>Select</label></button>
+        </div>
+      </div>
+      <div id="audio"></div>
+    </div>
+    <!-- partial -->
+    <script src="./index.js"></script>
+
+</body>
+
+</html>
