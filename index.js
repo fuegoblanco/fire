@@ -13,16 +13,16 @@ let config = {
     speed: 2.5,
   },
   canvas: {
-    width: '30vw',
-    height: '450px',
+    width: null,
+    height: null,
   },
   stage: stage,
 };
 
 function setup() {
   frameRate(40);
-  config.canvas.width = Math.min(windowWidth);
-  config.canvas.height = Math.min(windowHeight);
+  config.canvas.width = Math.min(windowWidth, 450);
+  config.canvas.height = Math.min(windowHeight, 450);
 
   canvas = createCanvas(config.canvas.width, config.canvas.height);
   canvas.parent('screen');
