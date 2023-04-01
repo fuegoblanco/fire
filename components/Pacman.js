@@ -20,8 +20,30 @@ class Pacman extends Entity {
 
     this.eat(this.cell);
   }
+  glow() {
+    // Calculate the opacity of the light based on the current time
+    const opacity = sin(millis() / 200) * 50 + 100;
+
+    // Reduce the opacity by a factor of 0.99 each frame to make the light gradually fade out
+    this.opacity = this.opacity ? this.opacity * 0.99 : opacity;
+
+    // Set the fill color to yellow with the calculated opacity
+    fill(243, 246, 244, opacity);
+
+    // Draw an ellipse around the character with a radius slightly larger than the size of the character
+    rectMode();
+    rect(
+      this.position.x + this.size / 2,
+      this.position.y + this.size / 2,
+      this.size * 0.5,
+      this.size * 0.5,
+      5
+    );
+  }
 
   show() {
+    this.glow();
+
     image(this.image, this.position.x, this.position.y, this.size, this.size);
   }
 

@@ -1,7 +1,7 @@
 /** @format */
 
 class Entity {
-  constructor(grid, row, column, size = 40, speed = 3) {
+  constructor(grid, row, column, size = 20, speed = 3) {
     this.grid = grid;
     this.row = row;
     this.column = column;

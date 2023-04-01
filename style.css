@@ -3,6 +3,9 @@
 *:not(body) {
   transition: all 0.2s ease-in-out;
 }
+button {
+  touch-action: manipulation;
+}
 
 #game,
 body {
@@ -12,7 +15,7 @@ body {
 }
 
 body {
-  background-color: #2f7488;
+  background-color: #7aa4fa;
 }
 @media (max-height: 450px) {
   body {

@@ -3,13 +3,13 @@
 let canvas;
 let game;
 let config = {
-  cellSize: 40,
+  cellSize: 60,
   pacman: {
-    size: 30,
+    size: 40,
     speed: 3,
   },
   ghost: {
-    size: 30,
+    size: 40,
     speed: 2.5,
   },
   canvas: {
@@ -20,9 +20,11 @@ let config = {
 };
 
 function setup() {
-  frameRate(40);
-  config.canvas.width = Math.min(windowWidth, 450);
-  config.canvas.height = Math.min(windowHeight, 450);
+  frameRate(50);
+  config.canvas.width = Math.min(windowWidth, 650);
+  config.canvas.height = Math.min(windowHeight, 650);
+  background(0);
+  noStroke();
 
   canvas = createCanvas(config.canvas.width, config.canvas.height);
   canvas.parent('screen');
@@ -47,7 +49,7 @@ function handleButtonClick(direction) {
   game.pacman.steer(direction);
 }
 function draw() {
-  background(color(11, 15, 26));
+  background(color(195, 248, 255));
 
   // Calculate the camera's position based on Pacman's position.
   const cameraX = -game.pacman.position.x + config.canvas.width / 2;

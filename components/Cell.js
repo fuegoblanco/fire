@@ -1,7 +1,7 @@
 /** @format */
 
 class Cell {
-  constructor(x, y, row, column, type, size = 40) {
+  constructor(x, y, row, column, type, size = 20) {
     this.type = type;
     this.size = size;
 
