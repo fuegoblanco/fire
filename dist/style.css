@@ -1,0 +1,240 @@
+/** @format */
+
+*:not(body) {
+  transition: all 0.2s ease-in-out;
+}
+
+#game,
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  background-color: #2f7488;
+}
+@media (max-height: 450px) {
+  body {
+    background-color: #c5c2bd;
+  }
+}
+
+p#help {
+  position: fixed;
+  top: 0;
+  left: 10px;
+  width: 120px;
+  font-family: Consolas, monaco, monospace;
+  font-size: 14px;
+}
+
+#game {
+  flex-flow: column;
+}
+@media (max-height: 450px) {
+  #game {
+    flex-flow: row;
+  }
+}
+
+#screen {
+  background-color: #1d1d1d;
+  display: block;
+  border-radius: 5px;
+  border: 20px solid rgba(0, 0, 0, 0.8);
+  width: 70vw;
+  height: 45vh;
+}
+@media (max-height: 450px) {
+  #screen {
+    border-radius: 20px;
+    border: 5px solid gray;
+    width: 50vw;
+    height: 90vh;
+  }
+}
+
+.nds-left {
+  padding: 20px;
+  display: none;
+}
+@media (max-height: 650px) {
+  .nds-left {
+    display: block;
+  }
+}
+
+.nds-right {
+  padding: 20px;
+  display: none;
+}
+@media (max-height: 450px) {
+  .nds-right {
+    display: block;
+  }
+}
+
+.gb-bottom {
+  display: block;
+}
+@media (max-height: 450px) {
+  .gb-bottom {
+    display: none;
+  }
+}
+
+.dpad {
+  right: 0;
+  height: 225px;
+  width: 75px;
+  background-color: #1f1e1e;
+  position: relative;
+  border-radius: 10px;
+}
+
+.dpad-direction {
+  position: absolute;
+  height: 75px;
+  width: 75px;
+  background-color: #1f1e1e;
+  border: 2px solid rgba(0, 0, 0, 0.8);
+}
+
+#dpad-up {
+  margin-left: 0px;
+  margin-top: 0px;
+  border-radius: 15px 15px 0 0;
+  border-bottom: none;
+}
+
+#dpad-right {
+  margin-left: 75px;
+  margin-top: 75px;
+  border-radius: 0 15px 15px 0;
+  border-left: none;
+}
+
+#dpad-down {
+  margin-left: 0px;
+  margin-top: 150px;
+  border-radius: 0 0 15px 15px;
+  border-top: none;
+}
+
+#dpad-left {
+  margin-left: -75px;
+  margin-top: 75px;
+  border-radius: 15px 0 0 15px;
+  border-right: none;
+}
+
+#dpad-center {
+  height: 68px;
+  width: 68px;
+  margin-left: 3.5px;
+  margin-top: 78.5px;
+  border-radius: 75px;
+}
+
+.nds-right {
+  position: aboslute;
+  width: 25px;
+  height: 25px;
+}
+
+.controls {
+  position: relative;
+  height: 175px;
+  width: 75px;
+
+  left: 25px;
+}
+
+.nds-right button,
+.attack-controls button {
+  width: 75px;
+  height: 75px;
+  border-radius: 100px;
+  box-shadow: 1px 0px 1px rgba(0, 0, 0, 0.5);
+  color: #252525;
+  font-weight: 600;
+  position: absolute;
+}
+#x {
+  margin-left: 0px;
+  margin-top: 0px;
+}
+
+#y {
+  margin-left: -75px;
+  margin-top: 75px;
+}
+
+#a {
+  margin-left: 75px;
+  margin-top: 75px;
+}
+
+#b {
+  margin-left: 0px;
+  margin-top: 150px;
+}
+
+.etc-controls button {
+  left: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.etc-controls label {
+  padding-left: 15px;
+  font-size: 14px;
+}
+
+#start {
+  margin-top: 100px;
+}
+
+#select {
+  margin-top: 125px;
+}
+
+.gb-bottom .dpad {
+  position: absolute;
+  left: 35vw;
+}
+
+.gb-bottom .attack-controls {
+  position: absolute;
+  right: 40vw;
+}
+
+button:hover {
+  box-shadow: none;
+  border: 1px solid lightgray;
+  background-color: darkgray;
+  color: gray;
+}
+
+.nds-left #audio {
+  position: relative;
+  top: 60px;
+  left: -40px;
+  width: 70px;
+  height: 60px;
+  background: linear-gradient(90deg, #c5c2bd 20px, transparent 1%) center,
+    linear-gradient(#c5c2bd 20px, transparent 1%) center, gray;
+  background-size: 22px 22px;
+}
+
+.gb-bottom #audio {
+  position: relative;
+  top: 95px;
+  left: -100px;
+  width: 150px;
+  height: 70px;
+  background: linear-gradient(90deg, #2f7488 20px, transparent 1%) center,
+    linear-gradient(#2f7488 20px, transparent 1%) center, gray;
+  background-size: 22px 22px;
+}

@@ -30,6 +30,7 @@ function preload() {
 
 function setup() {
   
+  
   frameRate(35);
 
   background(0);
@@ -45,19 +46,12 @@ function setup() {
   game.addPacman(1, 5);
 
   backgroundMusic.loop();
-  document
-    .getElementById('dpad-up')
-    .addEventListener('mousedown', () => handleButtonClick('up'));
-  document
-    .getElementById('dpad-down')
-    .addEventListener('mousedown', () => handleButtonClick('down'));
-  document
-    .getElementById('dpad-left')
-    .addEventListener('mousedown', () => handleButtonClick('left'));
-  document
-    .getElementById('dpad-right')
-    .addEventListener('mousedown', () => handleButtonClick('right'));
+  document.getElementById('dpad-up').addEventListener('touchstart', () => handleButtonClick('up'));
+  document.getElementById('dpad-down').addEventListener('touchstart', () => handleButtonClick('down'));
+  document.getElementById('dpad-left').addEventListener('touchstart', () => handleButtonClick('left'));
+  document.getElementById('dpad-right').addEventListener('touchstart', () => handleButtonClick('right'));
 }
+
 function handleButtonClick(direction) {
   game.pacman.steer(direction);
 }
