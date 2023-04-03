@@ -120,22 +120,23 @@ let currentDirection = null;
 
 
 function touchStarted() {
+  console.log("Touch coordinates:", touchX, touchY)
+  console.log("Touch started!"); // Add this line to see if the function is being triggered
   // Check if touch is on the left side of the screen
-  if (touchX < width / 2) {
+  if (touchX < canvas.width /  0.5) {
     // Check if touch is above the center of the screen
-    if (touchY < height / 2) {
+    if (touchY < canvas.height /  0.5) {
       game.pacman.steer('left');
     } else { // Touch is below the center of the screen
       game.pacman.steer('down');
     }
   } else { // Touch is on the right side of the screen
     // Check if touch is above the center of the screen
-    if (touchY < height / 2) {
+    if (touchY < canvas.height / 0.5) {
       game.pacman.steer('up');
     } else { // Touch is below the center of the screen
       game.pacman.steer('right');
     }
-    
   }
 }
 
