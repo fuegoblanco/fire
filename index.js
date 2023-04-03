@@ -10,11 +10,11 @@ let config = {
   cellSize: 60,
   pacman: {
     size: 40,
-    speed: 3,
+    speed: 4,
   },
   ghost: {
     size: 40,
-    speed: 2.5,
+    speed: 3.5,
   },
 
   canvas: {
