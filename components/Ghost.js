@@ -3,10 +3,17 @@
 class Ghost extends Entity {
   constructor(...props) {
     super(...props);
-    this.normalImage = loadImage('40.png');
-    this.fleeImage = loadImage('40d.png');
+   
+    this.images = [
+      { normal: loadImage('gator.png'), flee: loadImage('gatorweak.png') },
+      { normal: loadImage('fgold.png'), flee: loadImage('fgoldweak.png') },
+      { normal: loadImage('snow.png'), flee: loadImage('snowweak.png') },
+    ];
+    const randomIndex = Math.floor(Math.random() * this.images.length);
+    this.normalImage = this.images[randomIndex].normal;
+    this.fleeImage = this.images[randomIndex].flee;
     this.image = this.normalImage;
-    this.size = 40;
+    this.size = 60;
     this.isFleeing = false;
     this.directionSteps = 15;
     this.directionPacman = 10;
@@ -14,17 +21,19 @@ class Ghost extends Entity {
   }
 
   show() {
-    image(this.image, this.position.x, this.position.y, this.size, this.size);
+    image(this.image, this.position.x - 20 , this.position.y - 20, this.size, this.size);
   }
 
   flee() {
     this.image = this.fleeImage;
     this.isFleeing = true;
+    this.size = 30;
   }
 
   normal() {
     this.image = this.normalImage;
     this.isFleeing = false;
+    this.size = 60;
   }
 
   catch(target) {

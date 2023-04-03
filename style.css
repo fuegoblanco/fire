@@ -1,21 +1,20 @@
 /** @format */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 *:not(body) {
   transition: all 0.2s ease-in-out;
 }
-button {
-  touch-action: manipulation;
-}
 
 #game,
 body {
+  padding-top: 75px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 body {
-  background-color: #7aa4fa;
+  background-color: #2f7488;
 }
 @media (max-height: 450px) {
   body {
@@ -42,34 +41,33 @@ p#help {
 }
 
 #screen {
-  width: fit-content;
-  height: fit-content;
-  background-color: #1d1d1d;
   display: block;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 20px solid rgba(0, 0, 0, 0.8);
+  width: 70vw;
+  height: 50vh;
+  overflow: hidden;
 }
 @media (max-height: 450px) {
   #screen {
     border-radius: 20px;
     border: 5px solid gray;
-    width: 30vw;
+    width: 50vw;
     height: 90vh;
   }
 }
 
 .nds-left {
-  padding: 20px;
   display: none;
 }
-@media (max-height: 450px) {
+@media (max-height: 650px) {
   .nds-left {
     display: block;
   }
 }
 
 .nds-right {
-  padding: 20px;
+  padding: 5px;
   display: none;
 }
 @media (max-height: 450px) {
@@ -79,6 +77,7 @@ p#help {
 }
 
 .gb-bottom {
+  padding: 10px;
   display: block;
 }
 @media (max-height: 450px) {
@@ -88,57 +87,56 @@ p#help {
 }
 
 .dpad {
-  right: 20px;
-  height: 75px;
+  right: 0;
+  height: 225px;
+  width: 75px;
   background-color: #1f1e1e;
   position: relative;
-  width: 25px;
   border-radius: 10px;
 }
 
 .dpad-direction {
   position: absolute;
-  height: 25px;
-  width: 25px;
+  height: 75px;
+  width: 75px;
   background-color: #1f1e1e;
   border: 2px solid rgba(0, 0, 0, 0.8);
 }
 
-.dpad-up {
+#dpad-up {
   margin-left: 0px;
   margin-top: 0px;
-  border-radius: 5px 5px 0 0;
+  border-radius: 15px 15px 0 0;
   border-bottom: none;
 }
 
-.dpad-right {
-  margin-left: 25px;
-  margin-top: 25px;
-  border-radius: 0 5px 5px 0;
+#dpad-right {
+  margin-left: 75px;
+  margin-top: 75px;
+  border-radius: 0 15px 15px 0;
   border-left: none;
 }
 
-.dpad-down {
+#dpad-down {
   margin-left: 0px;
-  margin-top: 50px;
-  border-radius: 0 0 5px 5px;
+  margin-top: 150px;
+  border-radius: 0 0 15px 15px;
   border-top: none;
 }
 
-.dpad-left {
-  margin-left: -25px;
-  margin-top: 25px;
-  border-radius: 5px 0 0 5px;
+#dpad-left {
+  margin-left: -75px;
+  margin-top: 75px;
+  border-radius: 15px 0 0 15px;
   border-right: none;
 }
 
-.dpad-center {
-  background-color: #2b2a2a;
-  height: 23px;
-  width: 23px;
-  margin-left: 1px;
-  margin-top: 26px;
-  border-radius: 25px;
+#dpad-center {
+  height: 68px;
+  width: 68px;
+  margin-left: 3.5px;
+  margin-top: 78.5px;
+  border-radius: 75px;
 }
 
 .nds-right {
@@ -149,40 +147,39 @@ p#help {
 
 .controls {
   position: relative;
-  height: 75px;
-  width: 25px;
+  height: 175px;
+  width: 75px;
   left: 25px;
 }
 
 .nds-right button,
 .attack-controls button {
-  width: 25px;
-  height: 25px;
+  width: 75px;
+  height: 75px;
   border-radius: 100px;
   box-shadow: 1px 0px 1px rgba(0, 0, 0, 0.5);
   color: #252525;
   font-weight: 600;
   position: absolute;
 }
-
 #x {
   margin-left: 0px;
   margin-top: 0px;
 }
 
 #y {
-  margin-left: -25px;
-  margin-top: 25px;
+  margin-left: -75px;
+  margin-top: 75px;
 }
 
 #a {
-  margin-left: 25px;
-  margin-top: 25px;
+  margin-left: 75px;
+  margin-top: 75px;
 }
 
 #b {
   margin-left: 0px;
-  margin-top: 50px;
+  margin-top: 150px;
 }
 
 .etc-controls button {
@@ -193,6 +190,7 @@ p#help {
 
 .etc-controls label {
   padding-left: 15px;
+  font-size: 14px;
 }
 
 #start {
@@ -240,4 +238,68 @@ button:hover {
   background: linear-gradient(90deg, #2f7488 20px, transparent 1%) center,
     linear-gradient(#2f7488 20px, transparent 1%) center, gray;
   background-size: 22px 22px;
+}
+
+canvas {
+  margin: 0;
+  padding: 0;
+}
+
+
+#score {
+  position: absolute;
+  top: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Press Start 2P', cursive;
+  font-size: 36px;
+  color: black;
+}
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4); /* Black with opacity */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.modal-content h2 {
+  margin-top: 0;
+}
+
+.modal-content button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #1da1f2;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.player.active .play{
+  display: none;
+}
+
+.player.active .pause{
+  display: block;
+}
+
+.player .play{
+  display: block;
+}
+
+.player .pause{
+  display: none;
 }

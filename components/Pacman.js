@@ -3,19 +3,20 @@
 class Pacman extends Entity {
   constructor(...props) {
     super(...props);
-    this.pac = loadImage('bot.png');
-    this.size = 40;
+    this.pac = loadImage('40.png');
+    this.size = 50;
     this.image = this.pac;
     this.points = 0;
     this.lives = 3;
     this.hasPower = false;
     this.powerUsed = false;
     this.isPacman = true;
+    this.isPowerUp = false; // add boolean variable to track power-up state
 
     this.normalSize = this.size;
     this.normalSpeed = this.speed;
 
-    this.powerSize = this.normalSize + 5;
+    this.powerSize = this.normalSize + 10;
     this.powerSpeed = this.normalSpeed + 3;
 
     this.eat(this.cell);
@@ -35,16 +36,14 @@ class Pacman extends Entity {
     rect(
       this.position.x + this.size / 2,
       this.position.y + this.size / 2,
-      this.size * 0.5,
-      this.size * 0.5,
+      this.size * 0.7,
+      this.size * 0.7,
       5
     );
   }
 
   show() {
-    this.glow();
-
-    image(this.image, this.position.x, this.position.y, this.size, this.size);
+    image(this.image, this.position.x - 15, this.position.y - 15 , this.size, this.size);
   }
 
   eat(cell) {
@@ -80,11 +79,17 @@ class Pacman extends Entity {
   powerUp() {
     this.speed = this.powerSpeed;
     this.size = this.powerSize;
+    this.glow();
+    this.isPowerUp = true; // set isPowerUp to true
   }
 
   powerDown() {
+    this.hasPower = false;
+    this.powerUsed = true;
     this.speed = this.normalSpeed;
     this.size = this.normalSize;
+    this.opacity = 0;
+    this.isPowerUp = false; // set isPowerUp to false
   }
 
   move() {

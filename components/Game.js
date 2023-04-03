@@ -2,6 +2,8 @@
 
 class Game {
   constructor(config) {
+    this.timer = 0;
+    this.gameDuration = 90000;
     this.config = config;
     this.stage = null;
     this.pacman = null;
@@ -30,29 +32,13 @@ class Game {
   addPacman(row, column) {
     let { size, speed } = this.config.pacman;
     this.pacman = new Pacman(this.stage, row, column, size, speed);
+    this.showStats();
   }
 
   stop(message) {
     noLoop();
     console.log(message);
-    if (game.pacman.lives <= 0) {
-      // Display the modal and update the message
-      const modal = document.getElementById('myModal');
-      const modalMessage = document.getElementById('modalMessage');
-      modal.style.display = 'block';
-      modalMessage.innerHTML = message;
-
-      // Update the tweet button with the player's score
-      const tweetScoreButton = document.getElementById('tweetScore');
-      const tweetText = `I scored ${game.pacman.points} points in Pacman!`;
-      const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-        tweetText
-      )}`;
-      tweetScoreButton.setAttribute(
-        'onclick',
-        `window.open('${tweetUrl}', '_blank')`
-      );
-    }
+   
   }
 
   resetGhosts() {
@@ -104,13 +90,15 @@ class Game {
     this.resetPacmanPosition();
     loop();
   }
-
-  showStats(x, y) {
-    fill(255);
-    noStroke();
-    text('Points: ' + this.pacman.points, x, y);
-    text('Lives: ' + this.pacman.lives, x, y + 20);
-    text('Level: ' + this.level, x, y + 40);
+  showStats() {
+    const scoreContainer = document.getElementById('score');
+    const timeLeft = Math.max(0, this.gameDuration - this.timer);
+    scoreContainer.innerHTML = `
+   
+      <p>SCORE:${this.pacman.points} </p>
+      <p>${timeLeft}</p>
+    `;
+    document.body.appendChild(scoreContainer);
   }
 
   checkPower() {
@@ -145,8 +133,10 @@ class Game {
         } else {
           this.stop('You died.');
           this.resetLevel();
+
         }
       }
+      this.showStats();
     }
   }
 
