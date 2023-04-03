@@ -3,6 +3,7 @@
 let canvas;
 let game;
 let backgroundMusic;
+let dpadUp, dpadDown, dpadLeft, dpadRight;
 
 
 let config = {
@@ -30,7 +31,11 @@ function preload() {
 
 function setup() {
   
-  
+  dpadUp = createButton('⬆').position(80, 520).touchStarted(() => handleButtonClick('up'));
+  dpadDown = createButton('⬇').position(80, 620).touchStarted(() => handleButtonClick('down'));
+  dpadLeft = createButton('⬅').position(20, 570).touchStarted(() => handleButtonClick('left'));
+  dpadRight = createButton('➡').position(140, 570).touchStarted(() => handleButtonClick('right'));
+
   frameRate(35);
 
   background(0);
@@ -112,6 +117,33 @@ function draw() {
     if (keyCode == DOWN_ARROW) game.pacman.steer('down');
     if (keyCode == LEFT_ARROW) game.pacman.steer('left');
     if (keyCode == RIGHT_ARROW) game.pacman.steer('right');
+  }
+}
+let currentDirection = null;
+
+function touchMoved() {
+  const x = mouseX;
+  const y = mouseY;
+  if (x > 20 && x < 140 && y > 520 && y < 620) {
+    if (y < 570) {
+      currentDirection = 'up';
+    } else {
+      currentDirection = 'down';
+    }
+  } else if (y > 570 && y < 670) {
+    if (x < 80) {
+      currentDirection = 'left';
+    } else {
+      currentDirection = 'right';
+    }
+  } else {
+    currentDirection = null;
+  }
+  return false; // prevent default browser behavior
+}
+function handleButtonClick() {
+  if (currentDirection) {
+    game.pacman.steer(currentDirection);
   }
 }
 
