@@ -5,7 +5,8 @@ let game;
 let backgroundMusic;
 let dpadUp, dpadDown, dpadLeft, dpadRight;
 
-
+let touchX;
+let touchY;
 let config = {
   timeLimit: 90000,
   cellSize: 60,
@@ -31,11 +32,7 @@ function preload() {
 
 function setup() {
   
-  dpadUp = createButton('⬆').position(80, 520).touchStarted(() => handleButtonClick('up'));
-  dpadDown = createButton('⬇').position(80, 620).touchStarted(() => handleButtonClick('down'));
-  dpadLeft = createButton('⬅').position(20, 570).touchStarted(() => handleButtonClick('left'));
-  dpadRight = createButton('➡').position(140, 570).touchStarted(() => handleButtonClick('right'));
-
+ 
   frameRate(35);
 
   background(0);
@@ -51,15 +48,15 @@ function setup() {
   game.addPacman(1, 5);
 
   backgroundMusic.loop();
-  document.getElementById('dpad-up').addEventListener('touchstart', () => handleButtonClick('up'));
-  document.getElementById('dpad-down').addEventListener('touchstart', () => handleButtonClick('down'));
-  document.getElementById('dpad-left').addEventListener('touchstart', () => handleButtonClick('left'));
-  document.getElementById('dpad-right').addEventListener('touchstart', () => handleButtonClick('right'));
+  canvas.touchStarted(touchStarted);
+ 
+  canvas.touchEnded(touchEnded);
+ 
+  // Add event listeners to dpad buttons
+
 }
 
-function handleButtonClick(direction) {
-  game.pacman.steer(direction);
-}
+
 function draw() {
   if (game.timer >= game.config.timeLimit) {
 
@@ -121,30 +118,30 @@ function draw() {
 }
 let currentDirection = null;
 
-function touchMoved() {
-  const x = mouseX;
-  const y = mouseY;
-  if (x > 20 && x < 140 && y > 520 && y < 620) {
-    if (y < 570) {
-      currentDirection = 'up';
-    } else {
-      currentDirection = 'down';
+
+function touchStarted() {
+  // Check if touch is on the left side of the screen
+  if (touchX < width / 2) {
+    // Check if touch is above the center of the screen
+    if (touchY < height / 2) {
+      game.pacman.steer('left');
+    } else { // Touch is below the center of the screen
+      game.pacman.steer('down');
     }
-  } else if (y > 570 && y < 670) {
-    if (x < 80) {
-      currentDirection = 'left';
-    } else {
-      currentDirection = 'right';
+  } else { // Touch is on the right side of the screen
+    // Check if touch is above the center of the screen
+    if (touchY < height / 2) {
+      game.pacman.steer('up');
+    } else { // Touch is below the center of the screen
+      game.pacman.steer('right');
     }
-  } else {
-    currentDirection = null;
+    
   }
-  return false; // prevent default browser behavior
 }
-function handleButtonClick() {
-  if (currentDirection) {
-    game.pacman.steer(currentDirection);
-  }
+
+function touchEnded() {
+  // Stop the pacman's movement when touch is released
+  game.pacman.steer(null);
 }
 
 function windowResized() {

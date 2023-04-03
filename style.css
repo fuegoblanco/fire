@@ -44,8 +44,8 @@ p#help {
   display: block;
   border-radius: 10px;
   border: 20px solid rgba(0, 0, 0, 0.8);
-  width: 70vw;
-  height: 50vh;
+  width: 80vw;
+  height: 80vh;
   overflow: hidden;
 }
 @media (max-height: 450px) {
@@ -102,34 +102,34 @@ p#help {
   background-color: #1f1e1e;
   border: 2px solid rgba(0, 0, 0, 0.8);
 }
-
 #dpad-up {
-  margin-left: 0px;
+  margin-left: 23px;
   margin-top: 0px;
   border-radius: 15px 15px 0 0;
   border-bottom: none;
 }
 
 #dpad-right {
-  margin-left: 75px;
+  margin-left: 98px;
   margin-top: 75px;
   border-radius: 0 15px 15px 0;
   border-left: none;
 }
 
 #dpad-down {
-  margin-left: 0px;
+  margin-left: 23px;
   margin-top: 150px;
   border-radius: 0 0 15px 15px;
   border-top: none;
 }
 
 #dpad-left {
-  margin-left: -75px;
+  margin-left: -52px;
   margin-top: 75px;
   border-radius: 15px 0 0 15px;
   border-right: none;
 }
+
 
 #dpad-center {
   height: 68px;
